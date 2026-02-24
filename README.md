@@ -42,11 +42,10 @@ pip install -r requirements.txt
 
 #Run the scraper to download chapters:
 python webnovel-downloader.py
+or 
+python webnovel-downloader-v2.py
 
 #You will be prompted to select where you want the files to be downloaded
-
-#Currently configured for a specific web novel site structure.
-#May require modification for other websites.
 
 ---------------------
 
@@ -63,6 +62,15 @@ WebNovelGUI.py
 #This project is licensed under the MIT License, See the LICENSE file for details.
 
 ---------------------
+## Complability
+
+The scraper works with web novel sites that:
+
+- Use predictable chapter URL patterns  
+- Serve static HTML content  
+- Structure chapter content inside identifiable containers  
+
+It has been tested with select public novel aggregation sites.
 
 ## DISCLAIMER
 
