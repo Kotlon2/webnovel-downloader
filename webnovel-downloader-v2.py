@@ -1,4 +1,4 @@
-import requests 
+import cloudscraper
 import os
 from bs4 import BeautifulSoup
 import certifi
@@ -7,7 +7,7 @@ import time
 import random
 import tkinter as tk
 from tkinter import filedialog
-session = requests.Session()
+session = cloudscraper.create_scraper()
 
 headers ={
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -31,25 +31,23 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def scrape_chapter(chapter_num):
     
-        url = f"https://novelbin.com/b/lord-of-the-mysteries/chapter-{chapter_num}/" # Change this URL to the webnovel chapter URL pattern you want to scrape, make sure to include the chapter number in the URL pattern as shown.
+        url = f"https://example/example/example/example-{chapter_num}/" # Change this URL to the webnovel chapter URL pattern you want to scrape, make sure to include the chapter number in the URL pattern as shown.
         
-        response = session.get(url, headers=headers, verify=certifi.where())
+        response = session.get(url, headers=headers)
         
         print(f"Scraping chapter {chapter_num} from {url} - Status Code: {response.status_code}")
         
         if response.status_code != 200:
             print(f"Failed to retrieve chapter {chapter_num}. Status code: {response.status_code}")
             return
-        
-        time.sleep(random.uniform(0.15, 0.5)) # Random delay to avoid overwhelming the server and reduce the risk of getting blocked. Adjust the range as needed, but keep it reasonable to avoid getting blocked by the website.
-        
+                
         soup = BeautifulSoup(response.content, "html.parser")
    
         title = soup.select_one(".novel-title")
         
         h1= soup.select_one('h1')
         
-        chapter = soup.find("div", id ="chapterText")
+        chapter = soup.find("div", id ="chr-content")
         
         if chapter:
             paragraphs = chapter.find_all("p")
@@ -70,9 +68,9 @@ def scrape_chapter(chapter_num):
             
             
 def scrape():
-    with ThreadPoolExecutor(max_workers=3) as executor: # Adjust max_workers based on your system capabilities and the website's rate limits. DO NOT GO TOO HIGH TO AVOID GETTING BLOCKED BY THE WEBSITE. STAY WITHIN A REASONABLE NUMBER OF WORKERS. LIKE 3 OR 4 WORKERS TOPS.
-        chapter_nums = range(1, 5) # Change this range to the number of chapters you want to scrape, set it one higher than the last chapter number you want to scrape.
-        executor.map(scrape_chapter, chapter_nums)
+    for chapter_num in range(1, 5):
+        scrape_chapter(chapter_num)
+        time.sleep(random.uniform(1, 3)) #CLOUD FLARE IS SENSITIVE TO RAPID REQUESTS, SO WE ADD A RANDOM DELAY BETWEEN 1 AND 3 SECONDS TO AVOID GETTING BLOCKED. THIS IS SLOW, BUT IT HELPS TO ENSURE THAT THE SCRAPER CAN CONTINUE TO WORK WITHOUT BEING BLOCKED BY CLOUD FLARE. YOU CAN ADJUST THE DELAY TIME AS NEEDED, BUT KEEP IN MIND THAT SHORTER DELAYS MAY INCREASE THE RISK OF GETTING BLOCKED.
 
         
 if __name__ == "__main__":
