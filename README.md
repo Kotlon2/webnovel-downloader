@@ -30,7 +30,7 @@ venv\Scripts\activate        # Windows
 
 #Install dependencies:
 pip install -r requirements.txt
-
+```
 ---------------------
 ## Usage 
 
@@ -42,6 +42,9 @@ pip install -r requirements.txt
 python webnovel-downloader.py
 
 #You will be prompted to select where you want the files to be downloaded
+
+---------------------
+
 
 ## Reader
 
