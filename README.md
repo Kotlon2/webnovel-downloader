@@ -54,7 +54,8 @@ WebNovelGUI.py
 
 #This project is licensed under the MIT License, See the LICENSE file for details.
 
----
+---------------------
+
 ## DISCLAIMER
 
 -This tool is intended for personal use and educational purposes only.
