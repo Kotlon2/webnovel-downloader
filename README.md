@@ -30,7 +30,7 @@ venv\Scripts\activate        # Windows
 
 #Install dependencies:
 pip install -r requirements.txt
-
+```
 ---------------------
 ## Usage 
 
@@ -43,6 +43,9 @@ python webnovel-downloader.py
 
 #You will be prompted to select where you want the files to be downloaded
 
+---------------------
+
+
 ## Reader
 
 #Run the GUI reader to view downloaded chapter:
@@ -54,7 +57,8 @@ WebNovelGUI.py
 
 #This project is licensed under the MIT License, See the LICENSE file for details.
 
----
+---------------------
+
 ## DISCLAIMER
 
 -This tool is intended for personal use and educational purposes only.
