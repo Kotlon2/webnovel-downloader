@@ -11,8 +11,7 @@ A multithreaded Python web scraping tool that downloads novel chapters as text f
   - Buttons for previous and next chapters
 - Dark mode GUI for comfortable reading.
 
-- Currently configured for a specific web novel site structure.
-- May require modification for other websites.
+
 
 ---------------------
 
@@ -45,6 +44,9 @@ pip install -r requirements.txt
 python webnovel-downloader.py
 
 #You will be prompted to select where you want the files to be downloaded
+
+#Currently configured for a specific web novel site structure.
+#May require modification for other websites.
 
 ---------------------
 
